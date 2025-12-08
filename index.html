@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>设计作品集 | 创意平面设计展示</title>
+  <title>STEAMpolypdesign | 创意设计展示</title>
   <!-- 引入外部资源 -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -111,15 +111,6 @@
     .project-card:hover::before {
       opacity: 1;
     }
-    
-    /* 模态框动画 */
-    .modal-enter {
-      animation: modalFadeIn 0.3s ease forwards;
-    }
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
 
@@ -137,15 +128,12 @@
           <span class="text-secondary">STEAMPOLYP</span>Design
         </a>
         
-        <!-- 桌面导航 -->
+        <!-- 桌面导航 - 移除联系链接和GitHub图标 -->
         <div class="hidden md:flex items-center space-x-8">
           <a href="#hero" class="font-medium hover:text-primary transition-colors">首页</a>
           <a href="#works" class="font-medium hover:text-primary transition-colors">作品</a>
-          <a href="#about" class="font-medium hover:text-primary transition-colors">关于我</a>
+          <a href="#about" class="font-medium hover:text-primary transition-colors">关于</a>
           <a href="#skills" class="font-medium hover:text-primary transition-colors">技能</a>
-          <a href="https://github.com/你的用户名" target="_blank" class="ml-4 text-primary hover:text-primary/80 transition-colors">
-            <i class="fa fa-github text-xl"></i>
-          </a>
         </div>
         
         <!-- 移动端菜单按钮 -->
@@ -155,21 +143,18 @@
       </div>
     </div>
     
-    <!-- 移动端导航菜单 -->
+    <!-- 移动端导航菜单 - 移除联系链接和GitHub链接 -->
     <div id="mobile-menu" class="md:hidden hidden bg-white absolute w-full shadow-lg rounded-b-lg overflow-hidden">
       <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
         <a href="#hero" class="font-medium py-2 hover:text-primary transition-colors">首页</a>
         <a href="#works" class="font-medium py-2 hover:text-primary transition-colors">作品</a>
-        <a href="#about" class="font-medium py-2 hover:text-primary transition-colors">关于我</a>
+        <a href="#about" class="font-medium py-2 hover:text-primary transition-colors">关于</a>
         <a href="#skills" class="font-medium py-2 hover:text-primary transition-colors">技能</a>
-        <a href="https://github.com/你的用户名" target="_blank" class="flex items-center py-2 text-primary hover:text-primary/80 transition-colors">
-          <i class="fa fa-github mr-2"></i> GitHub
-        </a>
       </div>
     </div>
   </nav>
 
-  <!-- 英雄区域 -->
+  <!-- 英雄区域 - 删除社交媒体图标和联系我按钮 -->
   <section id="hero" class="min-h-screen flex items-center pt-20 pb-16 md:pt-0 md:pb-0 relative overflow-hidden">
     <div class="absolute inset-0 z-0">
       <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl"></div>
@@ -211,7 +196,7 @@
     </div>
   </section>
 
-  <!-- 作品展示区域 -->
+  <!-- 作品展示区域 - 已移除查看详情按钮 -->
   <section id="works" class="py-20 bg-white">
     <div class="container mx-auto px-4 md:px-6 lg:px-8">
       <div class="text-center mb-16">
@@ -249,9 +234,6 @@
             <span class="text-sm font-medium bg-primary/10 text-primary px-3 py-1 rounded-full">品牌设计</span>
             <h3 class="text-xl font-bold mt-3 mb-2 group-hover:text-primary transition-colors">有机食品品牌视觉</h3>
             <p class="text-gray-600 mb-4">为有机食品公司创建的完整品牌识别系统，包括标志、色彩系统和包装设计。</p>
-            <button class="view-project text-primary font-medium flex items-center hover:underline" data-project="1">
-              查看详情 <i class="fa fa-arrow-right ml-2"></i>
-            </button>
           </div>
         </div>
         
@@ -264,9 +246,6 @@
             <span class="text-sm font-medium bg-secondary/10 text-secondary px-3 py-1 rounded-full">UI/UX设计</span>
             <h3 class="text-xl font-bold mt-3 mb-2 group-hover:text-primary transition-colors">健康追踪应用界面</h3>
             <p class="text-gray-600 mb-4">专注于用户体验的健康管理应用界面设计，简洁直观的交互与视觉风格。</p>
-            <button class="view-project text-primary font-medium flex items-center hover:underline" data-project="2">
-              查看详情 <i class="fa fa-arrow-right ml-2"></i>
-            </button>
           </div>
         </div>
         
@@ -279,9 +258,6 @@
             <span class="text-sm font-medium bg-green-100 text-green-600 px-3 py-1 rounded-full">印刷设计</span>
             <h3 class="text-xl font-bold mt-3 mb-2 group-hover:text-primary transition-colors">艺术展览宣传册</h3>
             <p class="text-gray-600 mb-4">当代艺术展览的宣传册设计，结合排版实验与视觉层次，呈现艺术感。</p>
-            <button class="view-project text-primary font-medium flex items-center hover:underline" data-project="3">
-              查看详情 <i class="fa fa-arrow-right ml-2"></i>
-            </button>
           </div>
         </div>
         
@@ -294,9 +270,6 @@
             <span class="text-sm font-medium bg-purple-100 text-purple-600 px-3 py-1 rounded-full">动态设计</span>
             <h3 class="text-xl font-bold mt-3 mb-2 group-hover:text-primary transition-colors">品牌动画标识</h3>
             <p class="text-gray-600 mb-4">为科技公司设计的动态标识与过渡动画，增强品牌识别度与现代感。</p>
-            <button class="view-project text-primary font-medium flex items-center hover:underline" data-project="4">
-              查看详情 <i class="fa fa-arrow-right ml-2"></i>
-            </button>
           </div>
         </div>
         
@@ -309,9 +282,6 @@
             <span class="text-sm font-medium bg-primary/10 text-primary px-3 py-1 rounded-full">品牌设计</span>
             <h3 class="text-xl font-bold mt-3 mb-2 group-hover:text-primary transition-colors">咖啡品牌视觉系统</h3>
             <p class="text-gray-600 mb-4">精品咖啡品牌的完整视觉识别设计，从标志到包装的统一品牌语言。</p>
-            <button class="view-project text-primary font-medium flex items-center hover:underline" data-project="5">
-              查看详情 <i class="fa fa-arrow-right ml-2"></i>
-            </button>
           </div>
         </div>
         
@@ -323,10 +293,7 @@
           <div class="p-6">
             <span class="text-sm font-medium bg-secondary/10 text-secondary px-3 py-1 rounded-full">UI/UX设计</span>
             <h3 class="text-xl font-bold mt-3 mb-2 group-hover:text-primary transition-colors">电子商务平台重设计</h3>
-            <p class="text-gray-600 mb-4">提升用户转化率的电子商务平台界面重设计，优化购物体验与视觉呈现。</p>
-            <button class="view-project text-primary font-medium flex items-center hover:underline" data-project="6">
-              查看详情 <i class="fa fa-arrow-right ml-2"></i>
-            </button>
+            <p class="text-gray-600 mb-4">电子商务平台界面重设计探索，聚焦用户体验优化与视觉语言表达。</p>
           </div>
         </div>
       </div>
@@ -339,13 +306,13 @@
     </div>
   </section>
 
-  <!-- 关于我区域 -->
+  <!-- 关于区域 - 已修改标题为DESIGN和简化文本 -->
   <section id="about" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4 md:px-6 lg:px-8">
       <div class="flex flex-col lg:flex-row items-center gap-12">
         <div class="lg:w-1/2 relative">
           <div class="relative z-10 rounded-2xl overflow-hidden shadow-xl">
-            <img src="https://picsum.photos/id/64/600/800" alt="设计师照片" class="w-full h-auto object-cover">
+            <img src="https://picsum.photos/id/64/600/800" alt="设计作品展示" class="w-full h-auto object-cover">
           </div>
           
           <!-- 装饰元素 -->
@@ -353,42 +320,19 @@
         </div>
         
         <div class="lg:w-1/2">
-          <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mb-6">关于我</h2>
-          <p class="text-gray-600 mb-6 text-lg">
-            我是一名拥有5年经验的平面设计师，专注于品牌设计、UI/UX设计和视觉传达。毕业于知名设计学院，曾为多家知名企业提供设计服务。
-          </p>
+          <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mb-6 uppercase">DESIGN</h2>
           <p class="text-gray-600 mb-8 text-lg">
-            我的设计理念是将功能性与美学完美结合，通过简约而不简单的设计语言传达品牌核心价值。我相信好的设计应该是直观的、有意义的，并能与用户建立情感连接。
+            设计是沟通的艺术，通过视觉语言传递理念与情感。这里展示的每一个作品都经过精心构思，旨在探索设计的可能性与边界。
           </p>
-          
-          <div class="grid grid-cols-2 gap-6 mb-8">
-            <div>
-              <h3 class="font-bold text-xl mb-2">教育背景</h3>
-              <p class="text-gray-600">设计学院 视觉传达设计 学士</p>
-            </div>
-            <div>
-              <h3 class="font-bold text-xl mb-2">经验</h3>
-              <p class="text-gray-600">5年专业设计经验</p>
-            </div>
-            <div>
-              <h3 class="font-bold text-xl mb-2">专长</h3>
-              <p class="text-gray-600">品牌设计、UI/UX设计</p>
-            </div>
-            <div>
-              <h3 class="font-bold text-xl mb-2">获奖</h3>
-              <p class="text-gray-600">多项设计大赛奖项</p>
-            </div>
-          </div>
-          
-          <a href="#contact" class="inline-flex items-center bg-primary hover:bg-primary/90 text-white font-medium px-8 py-3 rounded-lg transition-all hover:shadow-lg hover:shadow-primary/20">
-            联系我 <i class="fa fa-arrow-right ml-2"></i>
+          <a href="#skills" class="inline-flex items-center bg-primary hover:bg-primary/90 text-white font-medium px-8 py-3 rounded-lg transition-all hover:shadow-lg hover:shadow-primary/20">
+            了解技能 <i class="fa fa-arrow-right ml-2"></i>
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 技能区域 -->
+  <!-- 技能区域 - 已补全软件图标 -->
   <section id="skills" class="py-20 bg-white">
     <div class="container mx-auto px-4 md:px-6 lg:px-8">
       <div class="text-center mb-16">
@@ -405,7 +349,7 @@
           </div>
         </div>
         
-        <!-- 工具与技术 -->
+        <!-- 工具与技术 - 补全所有图标 -->
         <div class="bg-gray-50 p-8 rounded-2xl shadow-lg">
           <h3 class="text-xl font-bold mb-6">工具与技术</h3>
           
@@ -431,7 +375,7 @@
             </div>
             
             <div class="bg-white p-4 rounded-lg text-center hover-lift">
-              <i class="fa fa-code text-3xl text-gray-800 mb-2"></i>
+              <i class="fa fa-figma text-3xl text-gray-800 mb-2"></i>
               <p class="font-medium">Figma</p>
             </div>
             
@@ -458,68 +402,44 @@
         </div>
       </div>
       
-      <!-- 客户评价 -->
+      <!-- 设计理念 -->
       <div class="mt-20">
-        <h3 class="text-2xl font-bold text-center mb-12">客户反馈</h3>
+        <h3 class="text-2xl font-bold text-center mb-12">设计理念</h3>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="bg-gray-50 p-8 rounded-2xl shadow-lg hover-lift">
-            <div class="flex items-center mb-4">
-              <img src="https://picsum.photos/id/1001/100/100" alt="客户头像" class="w-12 h-12 rounded-full object-cover mr-4">
-              <div>
-                <h4 class="font-bold">张经理</h4>
-                <p class="text-gray-600 text-sm">品牌总监</p>
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                <i class="fa fa-lightbulb-o text-primary text-xl"></i>
               </div>
-            </div>
-            <div class="text-yellow-400 mb-4">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
+              <h4 class="text-xl font-bold">创意为先</h4>
             </div>
             <p class="text-gray-600">
-              设计师的作品超出了我们的预期，品牌视觉系统设计非常专业，帮助我们的品牌形象提升到了新的高度。沟通顺畅，按时交付，非常推荐！
+              每个设计都始于独特的创意，通过深入思考与探索，寻找最能表达核心思想的视觉语言。
             </p>
           </div>
           
           <div class="bg-gray-50 p-8 rounded-2xl shadow-lg hover-lift">
-            <div class="flex items-center mb-4">
-              <img src="https://picsum.photos/id/1002/100/100" alt="客户头像" class="w-12 h-12 rounded-full object-cover mr-4">
-              <div>
-                <h4 class="font-bold">李女士</h4>
-                <p class="text-gray-600 text-sm">创业公司创始人</p>
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                <i class="fa fa-users text-primary text-xl"></i>
               </div>
-            </div>
-            <div class="text-yellow-400 mb-4">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
+              <h4 class="text-xl font-bold">以人为本</h4>
             </div>
             <p class="text-gray-600">
-              非常满意设计师为我们设计的APP界面，不仅美观而且用户体验极佳。设计师能够准确理解我们的需求，并提供了很多有价值的建议。
+              设计最终服务于人，关注用户体验与感受，创造既美观又实用的视觉作品。
             </p>
           </div>
           
           <div class="bg-gray-50 p-8 rounded-2xl shadow-lg hover-lift">
-            <div class="flex items-center mb-4">
-              <img src="https://picsum.photos/id/1003/100/100" alt="客户头像" class="w-12 h-12 rounded-full object-cover mr-4">
-              <div>
-                <h4 class="font-bold">王先生</h4>
-                <p class="text-gray-600 text-sm">市场部经理</p>
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                <i class="fa fa-balance-scale text-primary text-xl"></i>
               </div>
-            </div>
-            <div class="text-yellow-400 mb-4">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
+              <h4 class="text-xl font-bold">平衡和谐</h4>
             </div>
             <p class="text-gray-600">
-              我们的展览宣传册设计非常成功，很多参观者都对设计赞不绝口。设计师对细节的把控和创意能力令人印象深刻，合作非常愉快。
+              在形式与功能、简约与丰富之间寻找平衡，创造具有视觉张力与和谐感的设计作品。
             </p>
           </div>
         </div>
@@ -527,48 +447,38 @@
     </div>
   </section>
 
-  <!-- 联系区域 -->
+  <!-- 联系区域 - 仅保留邮箱 -->
   <section id="contact" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4 md:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mb-4">联系我</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">有项目合作需求或任何问题？欢迎通过邮箱联系我，我会尽快回复你</p>
+        <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold mb-4">联系我们</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">有任何疑问或建议？欢迎通过邮箱联系我们，我们会尽快回复你</p>
       </div>
       
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <!-- 仅保留邮箱联系方式 -->
-        <div class="flex flex-col justify-between">
+      <div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-lg">
+        <div class="flex items-start">
+          <div class="bg-primary/10 p-3 rounded-lg mr-4">
+            <i class="fa fa-envelope text-primary text-xl"></i>
+          </div>
           <div>
-            <h3 class="text-xl font-bold mb-6">联系方式</h3>
-            
-            <div class="space-y-6 mb-12">
-              <!-- 仅保留邮箱 -->
-              <div class="flex items-start">
-                <div class="bg-primary/10 p-3 rounded-lg mr-4">
-                  <i class="fa fa-envelope text-primary text-xl"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold text-lg mb-1">邮箱</h4>
-                  <p class="text-gray-600">bianswither@outlook.com</p>
-                </div>
-              </div>
-            </div>
+            <h4 class="font-bold text-lg mb-1">邮箱</h4>
+            <p class="text-gray-600 text-lg">contact@steampolypdesign.com</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 页脚 -->
+  <!-- 页脚 - 删除社交媒体图标和订阅表单 -->
   <footer class="bg-dark text-white py-12">
     <div class="container mx-auto px-4 md:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
         <div>
           <a href="#hero" class="text-2xl font-bold flex items-center mb-4">
-            <span class="text-secondary">Design</span>Portfolio
+            <span class="text-secondary">STEAMPOLYP</span>Design
           </a>
           <p class="text-gray-400 mb-6">
-            创意平面设计作品集，展示品牌设计、UI/UX设计、印刷设计等作品。
+            创意设计展示平台，呈现品牌设计、UI/UX设计、印刷设计等作品。
           </p>
         </div>
         
@@ -577,13 +487,14 @@
           <ul class="space-y-2">
             <li><a href="#hero" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
             <li><a href="#works" class="text-gray-400 hover:text-white transition-colors">作品</a></li>
-            <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">关于我</a></li>
+            <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">关于</a></li>
             <li><a href="#skills" class="text-gray-400 hover:text-white transition-colors">技能</a></li>
+            <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">联系</a></li>
           </ul>
         </div>
         
         <div>
-          <h3 class="text-lg font-bold mb-4">服务</h3>
+          <h3 class="text-lg font-bold mb-4">展示类别</h3>
           <ul class="space-y-2">
             <li><a href="#" class="text-gray-400 hover:text-white transition-colors">品牌设计</a></li>
             <li><a href="#" class="text-gray-400 hover:text-white transition-colors">UI/UX设计</a></li>
@@ -596,60 +507,15 @@
       
       <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
         <p class="text-gray-400 mb-4 md:mb-0">
-          &copy; 2024 DesignPortfolio. 保留所有权利。
+          &copy; 2024 STEAMpolypdesign. 保留所有权利。
         </p>
         <div class="flex space-x-6">
           <a href="#" class="text-gray-400 hover:text-white transition-colors">隐私政策</a>
-          <a href="#" class="text-gray-400 hover:text-white transition-colors">服务条款</a>
-          <a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie 政策</a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">使用条款</a>
         </div>
       </div>
     </div>
   </footer>
-
-  <!-- 作品详情模态框 -->
-  <div id="project-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto modal-enter">
-      <div class="relative">
-        <button id="close-modal" class="absolute top-4 right-4 bg-black/50 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black/70 transition-colors z-10">
-          <i class="fa fa-times"></i>
-        </button>
-        
-        <div class="aspect-[16/9] overflow-hidden">
-          <img id="modal-image" src="" alt="项目详情图片" class="w-full h-full object-cover">
-        </div>
-        
-        <div class="p-6 md:p-8">
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span id="modal-category" class="text-sm font-medium px-3 py-1 rounded-full"></span>
-            <span id="modal-date" class="text-sm text-gray-500"></span>
-          </div>
-          
-          <h2 id="modal-title" class="text-2xl md:text-3xl font-bold mb-4"></h2>
-          <p id="modal-description" class="text-gray-600 mb-8"></p>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div>
-              <h3 class="font-bold text-gray-500 mb-2">客户</h3>
-              <p id="modal-client" class="font-medium"></p>
-            </div>
-            <div>
-              <h3 class="font-bold text-gray-500 mb-2">服务</h3>
-              <p id="modal-service" class="font-medium"></p>
-            </div>
-          </div>
-          
-          <a id="modal-link" href="#" target="_blank" class="inline-flex items-center bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-lg transition-all">
-            查看完整项目 <i class="fa fa-external-link ml-2"></i>
-          </a>
-          
-          <button id="modal-close-btn" class="ml-4 inline-flex items-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium px-6 py-3 rounded-lg transition-all">
-            关闭 <i class="fa fa-times ml-2"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- JavaScript -->
   <script>
@@ -716,150 +582,21 @@
         });
       });
       
-      // 作品详情模态框
-      const modal = document.getElementById('project-modal');
-      const closeModal = document.getElementById('close-modal');
-      const modalCloseBtn = document.getElementById('modal-close-btn');
-      const viewProjectBtns = document.querySelectorAll('.view-project');
-      
-      // 作品数据
-      const projectsData = [
-        {
-          id: 1,
-          title: '有机食品品牌视觉',
-          category: '品牌设计',
-          description: '为有机食品公司创建的完整品牌识别系统，包括标志、色彩系统、字体规范和包装设计。设计理念源于自然与健康，采用清新的色彩和简约的线条，传达品牌的有机、健康、可持续的核心价值。',
-          image: 'https://picsum.photos/id/26/1200/675',
-          date: '2023年6月',
-          client: 'Green Organic Foods',
-          service: '品牌识别设计、包装设计',
-          link: '#'
-        },
-        {
-          id: 2,
-          title: '健康追踪应用界面',
-          category: 'UI/UX设计',
-          description: '专注于用户体验的健康管理应用界面设计，简洁直观的交互与视觉风格。设计重点在于数据可视化和用户激励机制，帮助用户轻松追踪健康数据并养成良好的生活习惯。',
-          image: 'https://picsum.photos/id/96/1200/675',
-          date: '2023年3月',
-          client: 'Health Tracker App',
-          service: 'UI设计、UX设计、原型设计',
-          link: '#'
-        },
-        {
-          id: 3,
-          title: '艺术展览宣传册',
-          category: '印刷设计',
-          description: '当代艺术展览的宣传册设计，结合排版实验与视觉层次，呈现艺术感。采用非对称布局和大胆的色彩对比，突出展览的现代感和艺术性，同时保证信息的清晰传达。',
-          image: 'https://picsum.photos/id/24/1200/675',
-          date: '2022年11月',
-          client: 'Modern Art Gallery',
-          service: '宣传册设计、排版设计、印刷指导',
-          link: '#'
-        },
-        {
-          id: 4,
-          title: '品牌动画标识',
-          category: '动态设计',
-          description: '为科技公司设计的动态标识与过渡动画，增强品牌识别度与现代感。动画设计简洁有力，传达品牌的创新精神和技术实力，适用于网站、APP和各类营销材料。',
-          image: 'https://picsum.photos/id/42/1200/675',
-          date: '2023年1月',
-          client: 'Tech Innovations Inc.',
-          service: '动态标识设计、动画制作',
-          link: '#'
-        },
-        {
-          id: 5,
-          title: '咖啡品牌视觉系统',
-          category: '品牌设计',
-          description: '精品咖啡品牌的完整视觉识别设计，从标志到包装的统一品牌语言。设计灵感来自咖啡的烘焙过程和香气，采用温暖的色调和质感，打造高端、专业的品牌形象。',
-          image: 'https://picsum.photos/id/62/1200/675',
-          date: '2022年9月',
-          client: 'Premium Coffee Co.',
-          service: '品牌识别设计、包装设计、店面视觉',
-          link: '#'
-        },
-        {
-          id: 6,
-          title: '电子商务平台重设计',
-          category: 'UI/UX设计',
-          description: '提升用户转化率的电子商务平台界面重设计，优化购物体验与视觉呈现。通过用户研究和数据分析，重新设计了关键用户流程和界面元素，显著提升了用户满意度和购买转化率。',
-          image: 'https://picsum.photos/id/160/1200/675',
-          date: '2023年4月',
-          client: 'Fashion Online Store',
-          service: 'UI设计、UX设计、用户研究',
-          link: '#'
-        }
-      ];
-      
-      // 打开模态框
-      viewProjectBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          const projectId = parseInt(this.getAttribute('data-project'));
-          const project = projectsData.find(p => p.id === projectId);
-          
-          if (project) {
-            document.getElementById('modal-image').src = project.image;
-            document.getElementById('modal-image').alt = project.title;
-            document.getElementById('modal-title').textContent = project.title;
-            document.getElementById('modal-description').textContent = project.description;
-            document.getElementById('modal-date').textContent = project.date;
-            document.getElementById('modal-client').textContent = project.client;
-            document.getElementById('modal-service').textContent = project.service;
-            document.getElementById('modal-link').href = project.link;
-            
-            // 设置分类标签样式
-            const categoryEl = document.getElementById('modal-category');
-            categoryEl.textContent = project.category;
-            
-            // 根据分类设置不同颜色
-            categoryEl.className = 'text-sm font-medium px-3 py-1 rounded-full';
-            if (project.category === '品牌设计') {
-              categoryEl.classList.add('bg-primary/10', 'text-primary');
-            } else if (project.category === 'UI/UX设计') {
-              categoryEl.classList.add('bg-secondary/10', 'text-secondary');
-            } else if (project.category === '印刷设计') {
-              categoryEl.classList.add('bg-green-100', 'text-green-600');
-            } else if (project.category === '动态设计') {
-              categoryEl.classList.add('bg-purple-100', 'text-purple-600');
-            }
-            
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-          }
-        });
-      });
-      
-      // 关闭模态框
-      function closeModalFunc() {
-        modal.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-      }
-      
-      closeModal.addEventListener('click', closeModalFunc);
-      modalCloseBtn.addEventListener('click', closeModalFunc);
-      
-      // 点击模态框外部关闭
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          closeModalFunc();
-        }
-      });
-      
       // 技能图表
       const ctx = document.getElementById('skillsChart').getContext('2d');
       new Chart(ctx, {
         type: 'radar',
         data: {
-          labels: ['品牌设计', 'UI/UX设计', '印刷设计', '动态设计', '排版设计', '色彩搭配'],
+          labels: ['品牌设计', 'UI/UX设计', '印刷设计', '动态设计', '创意构思', '色彩搭配'],
           datasets: [{
-            label: '技能水平',
-            data: [95, 90, 88, 82, 93, 96],
+            label: '技能熟练度',
+            data: [90, 85, 80, 75, 95, 88],
             backgroundColor: 'rgba(22, 93, 255, 0.2)',
             borderColor: 'rgba(22, 93, 255, 1)',
-            borderWidth: 2,
             pointBackgroundColor: 'rgba(22, 93, 255, 1)',
-            pointRadius: 4
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgba(22, 93, 255, 1)'
           }]
         },
         options: {
@@ -868,13 +605,8 @@
               beginAtZero: true,
               max: 100,
               ticks: {
-                display: false
+                stepSize: 20
               }
-            }
-          },
-          plugins: {
-            legend: {
-              display: false
             }
           }
         }
