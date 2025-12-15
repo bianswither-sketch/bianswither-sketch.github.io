@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 粒子背景 canvas -->
-    <canvas id="particleCanvas"></canvas>
+    <!-- 背景粒子效果 -->
+    <div id="particles-background"></div>
     
     <!-- 导航栏 -->
     <nav class="navbar">
-        <div class="container">
-            <h1 class="logo">SteamPolyp DESIGN</h1>
-            <ul class="nav-menu">
+        <div class="nav-container">
+            <div class="logo">SteamPolyp DESIGN</div>
+            <ul class="nav-links">
                 <li><a href="index.html">首页</a></li>
                 <li><a href="portfolio.html">作品展示</a></li>
                 <li><a href="contact.html" class="active">联系我</a></li>
@@ -22,27 +22,53 @@
         </div>
     </nav>
 
-    <!-- 联系我区域 -->
-    <section class="contact">
+    <!-- 联系区域 -->
+    <section class="contact-section">
         <div class="container">
-            <h2>联系我</h2>
+            <h1>联系我</h1>
             <div class="contact-content">
-                <div class="contact-info">
-                    <h3>联系方式</h3>
-                    <p>如果您对我的作品感兴趣或有任何合作机会，欢迎随时联系我。</p>
-                    <br>
-                    <ul class="contact-details">
-                        <li><strong>邮箱：</strong> bianswither@outlook.com</li>
-                    </ul>
+                <div class="contact-info-full">
+                    <h2>联系方式</h2>
+                    <p>如果您有任何问题或想了解更多信息，请随时联系我：</p>
+                    <div class="contact-method">
+                        <h3>邮箱</h3>
+                        <p><a href="mailto:bianswither@outlook.com">bianswither@outlook.com</a></p>
+                    </div>
+                    <div class="contact-method">
+                        <h3>社交媒体</h3>
+                        <p>您也可以通过以下社交媒体平台找到我：</p>
+                        <ul>
+                            <li>微博: @SteamPolypDesign</li>
+                            <li>Instagram: @steam_polyp_design</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h2>发送消息</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">消息</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">发送消息</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 页脚 -->
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <p>&copy; 2024 SteamPolyp DESIGN. 保留所有权利.</p>
+            <p>&copy; 2023 SteamPolyp DESIGN. All rights reserved.</p>
         </div>
     </footer>
 
