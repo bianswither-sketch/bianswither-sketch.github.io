@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 粒子背景 canvas -->
-    <canvas id="particleCanvas"></canvas>
+    <!-- 背景粒子效果 -->
+    <div id="particles-background"></div>
     
     <!-- 导航栏 -->
     <nav class="navbar">
-        <div class="container">
-            <h1 class="logo">SteamPolyp DESIGN</h1>
-            <ul class="nav-menu">
+        <div class="nav-container">
+            <div class="logo">SteamPolyp DESIGN</div>
+            <ul class="nav-links">
                 <li><a href="index.html">首页</a></li>
                 <li><a href="portfolio.html" class="active">作品展示</a></li>
                 <li><a href="contact.html">联系我</a></li>
@@ -23,79 +23,72 @@
     </nav>
 
     <!-- 作品展示区域 -->
-    <section class="portfolio">
+    <section class="portfolio-section">
         <div class="container">
-            <h2>作品展示</h2>
-            <h3>show my ideas</h3>
+            <h1>我的作品</h1>
             <div class="portfolio-grid">
-                <!-- 作品1 -->
                 <div class="portfolio-item">
-                    <div class="image-container">
-                        <img src="images/work1.jpg" alt="作品1">
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>作品标题1</h4>
-                        <p>作品详细描述：这里可以添加作品的详细信息，包括项目背景、使用的技术、完成时间等。</p>
-                    </div>
+                    <a href="project-detail.html?id=1">
+                        <img src="images/work1.jpg" alt="作品1" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <h3>作品标题1</h3>
+                            <p>作品描述1</p>
+                        </div>
+                    </a>
                 </div>
-                <!-- 作品2 -->
                 <div class="portfolio-item">
-                    <div class="image-container">
-                        <img src="images/work2.jpg" alt="作品2">
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>作品标题2</h4>
-                        <p>作品详细描述：这里可以添加作品的详细信息，包括项目背景、使用的技术、完成时间等。</p>
-                    </div>
+                    <a href="project-detail.html?id=2">
+                        <img src="images/work2.jpg" alt="作品2" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <h3>作品标题2</h3>
+                            <p>作品描述2</p>
+                        </div>
+                    </a>
                 </div>
-                <!-- 作品3 -->
                 <div class="portfolio-item">
-                    <div class="image-container">
-                        <img src="images/work3.jpg" alt="作品3">
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>作品标题3</h4>
-                        <p>作品详细描述：这里可以添加作品的详细信息，包括项目背景、使用的技术、完成时间等。</p>
-                    </div>
+                    <a href="project-detail.html?id=3">
+                        <img src="images/work3.jpg" alt="作品3" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <h3>作品标题3</h3>
+                            <p>作品描述3</p>
+                        </div>
+                    </a>
                 </div>
-                <!-- 作品4 -->
                 <div class="portfolio-item">
-                    <div class="image-container">
-                        <img src="images/work4.jpg" alt="作品4">
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>作品标题4</h4>
-                        <p>作品详细描述：这里可以添加作品的详细信息，包括项目背景、使用的技术、完成时间等。</p>
-                    </div>
+                    <a href="project-detail.html?id=4">
+                        <img src="images/work4.jpg" alt="作品4" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <h3>作品标题4</h3>
+                            <p>作品描述4</p>
+                        </div>
+                    </a>
                 </div>
-                <!-- 作品5 -->
                 <div class="portfolio-item">
-                    <div class="image-container">
-                        <img src="images/work5.jpg" alt="作品5">
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>作品标题5</h4>
-                        <p>作品详细描述：这里可以添加作品的详细信息，包括项目背景、使用的技术、完成时间等。</p>
-                    </div>
+                    <a href="project-detail.html?id=5">
+                        <img src="images/work5.jpg" alt="作品5" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <h3>作品标题5</h3>
+                            <p>作品描述5</p>
+                        </div>
+                    </a>
                 </div>
-                <!-- 作品6 -->
                 <div class="portfolio-item">
-                    <div class="image-container">
-                        <img src="images/work6.jpg" alt="作品6">
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>作品标题6</h4>
-                        <p>作品详细描述：这里可以添加作品的详细信息，包括项目背景、使用的技术、完成时间等。</p>
-                    </div>
+                    <a href="project-detail.html?id=6">
+                        <img src="images/work6.jpg" alt="作品6" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <h3>作品标题6</h3>
+                            <p>作品描述6</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 页脚 -->
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <p>&copy; 2024 SteamPolyp DESIGN. 保留所有权利.</p>
+            <p>&copy; 2023 SteamPolyp DESIGN. All rights reserved.</p>
         </div>
     </footer>
 
