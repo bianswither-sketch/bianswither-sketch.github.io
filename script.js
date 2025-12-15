@@ -1,149 +1,186 @@
-// 粒子系统
-class ParticleSystem {
-    constructor() {
-        this.canvas = document.getElementById('particleCanvas');
-        this.ctx = this.canvas.getContext('2d');
-        this.particles = [];
-        this.resize();
-        window.addEventListener('resize', () => this.resize());
-        this.initParticles();
-        this.animate();
-    }
-
-    resize() {
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
-    }
-
-    initParticles() {
-        // 创建粒子
-        for (let i = 0; i < 100; i++) {
-            this.particles.push({
-                x: Math.random() * this.canvas.width,
-                y: Math.random() * this.canvas.height,
-                size: Math.random() * 3 + 1,
-                speedX: (Math.random() - 0.5) * 0.5,
-                speedY: (Math.random() - 0.5) * 0.5,
-                color: `rgba(255, 215, 0, ${Math.random() * 0.5 + 0.1})`,
-                opacity: Math.random() * 0.5 + 0.1,
-                blinkSpeed: Math.random() * 0.02 + 0.005
-            });
-        }
-    }
-
-    update() {
-        for (let i = 0; i < this.particles.length; i++) {
-            let p = this.particles[i];
-            
-            // 更新位置
-            p.x += p.speedX;
-            p.y += p.speedY;
-            
-            // 边界检查
-            if (p.x > this.canvas.width || p.x < 0) p.speedX *= -1;
-            if (p.y > this.canvas.height || p.y < 0) p.speedY *= -1;
-            
-            // 闪烁效果
-            p.opacity += p.blinkSpeed;
-            if (p.opacity > 0.6 || p.opacity < 0.1) {
-                p.blinkSpeed *= -1;
-            }
-        }
-    }
-
-    draw() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
-        for (let i = 0; i < this.particles.length; i++) {
-            let p = this.particles[i];
-            
-            this.ctx.beginPath();
-            this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            this.ctx.fillStyle = `rgba(255, 215, 0, ${p.opacity})`;
-            this.ctx.fill();
-        }
-    }
-
-    animate() {
-        this.update();
-        this.draw();
-        requestAnimationFrame(() => this.animate());
-    }
-}
-
-// 轮播图功能
+// 粒子背景效果和网站功能
 document.addEventListener('DOMContentLoaded', function() {
-    // 初始化粒子系统
-    const particleSystem = new ParticleSystem();
+    const particlesBackground = document.getElementById('particles-background');
     
+    // 创建随机飘动的黄色粒子
+    function createParticle() {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // 随机大小
+        const size = Math.random() * 5 + 2;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // 随机位置
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        
+        // 随机透明度
+        particle.style.opacity = Math.random() * 0.7 + 0.3;
+        
+        // 随机闪烁动画
+        const blinkDuration = Math.random() * 3 + 2;
+        particle.style.animation = `blink ${blinkDuration}s infinite alternate`;
+        
+        // 随机飘动方向和速度
+        const moveX = (Math.random() - 0.5) * 4;
+        const moveY = -(Math.random() * 2 + 1); // 向上飘动
+        particle.style.setProperty('--move-x', `${moveX}px`);
+        particle.style.setProperty('--move-y', `${moveY}px`);
+        
+        particlesBackground.appendChild(particle);
+        
+        // 添加飘动动画
+        particle.animate([
+            { transform: 'translate(0, 0)' },
+            { transform: `translate(var(--move-x, 0), var(--move-y, 0))` }
+        ], {
+            duration: Math.random() * 5000 + 5000,
+            iterations: Infinity,
+            direction: 'alternate',
+            easing: 'ease-in-out'
+        });
+        
+        // 移除粒子以避免内存泄漏
+        setTimeout(() => {
+            particle.remove();
+        }, 10000);
+    }
+    
+    // 定期创建粒子
+    setInterval(createParticle, 300);
+    
+    // 作品滑块功能
     const sliderContainer = document.querySelector('.slider-container');
     const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
+    
     let currentIndex = 0;
-    const slideCount = slides.length;
-
-    // 设置轮播图宽度
-    function setupSlider() {
-        sliderContainer.style.width = `${slideCount * 100}%`;
-        slides.forEach(slide => {
-            slide.style.width = `${100 / slideCount}%`;
+    
+    function showSlide(index) {
+        if (index >= slides.length) {
+            currentIndex = 0;
+        } else if (index < 0) {
+            currentIndex = slides.length - 1;
+        } else {
+            currentIndex = index;
+        }
+        
+        // 移动滑块
+        sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // 更新圆点指示器
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
         });
-        updateSlider();
     }
-
-    // 更新轮播图位置
-    function updateSlider() {
-        sliderContainer.style.transform = `translateX(-${currentIndex * (100 / slideCount)}%)`;
-    }
-
-    // 下一张
+    
+    // 下一张幻灯片
     function nextSlide() {
-        currentIndex = (currentIndex + 1) % slideCount;
-        updateSlider();
+        showSlide(currentIndex + 1);
     }
-
-    // 上一张
+    
+    // 上一张幻灯片
     function prevSlide() {
-        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-        updateSlider();
+        showSlide(currentIndex - 1);
     }
-
-    // 绑定按钮事件
+    
+    // 圆点点击事件
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+        });
+    });
+    
+    // 按钮事件
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
-
+    
     // 自动播放
     setInterval(nextSlide, 5000);
-
-    // 初始化轮播图
-    setupSlider();
-
-    // 平滑过渡动画
-    const fadeElements = document.querySelectorAll('.fade-in');
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('appear');
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-    
-    fadeElements.forEach(element => {
-        observer.observe(element);
-    });
-
-    // 滚动动画
-    const scrollDown = document.querySelector('.scroll-down');
-    if (scrollDown) {
-        scrollDown.addEventListener('click', () => {
-            window.scrollTo({
-                top: window.innerHeight,
-                behavior: 'smooth'
-            });
+    // 表单提交处理
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 获取表单数据
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // 这里可以添加表单提交逻辑
+            alert(`感谢您的消息，${name}！我会尽快回复您。`);
+            contactForm.reset();
         });
     }
+    
+    // 图片压缩功能实现
+    function compressImage(file, quality = 0.7) {
+        return new Promise((resolve, reject) => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            
+            img.onload = function() {
+                // 设置压缩后的最大宽度和高度
+                const maxWidth = 1920;
+                const maxHeight = 1080;
+                
+                let width = img.width;
+                let height = img.height;
+                
+                // 按比例缩放图片
+                if (width > height) {
+                    if (width > maxWidth) {
+                        height = Math.round((height *= maxWidth / width));
+                        width = maxWidth;
+                    }
+                } else {
+                    if (height > maxHeight) {
+                        width = Math.round((width *= maxHeight / height));
+                        height = maxHeight;
+                    }
+                }
+                
+                // 设置canvas尺寸
+                canvas.width = width;
+                canvas.height = height;
+                
+                // 绘制图片到canvas
+                ctx.drawImage(img, 0, 0, width, height);
+                
+                // 将canvas转换为blob对象
+                canvas.toBlob(resolve, 'image/jpeg', quality);
+            };
+            
+            img.onerror = reject;
+            
+            // 读取文件
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+    
+    // 应用图片压缩到所有图片元素
+    function applyImageCompression() {
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            // 为已经加载的图片应用压缩
+            if (img.complete && img.naturalHeight !== 0) {
+                // 这里只是示例，实际应用中需要更复杂的逻辑来处理图片压缩
+                console.log('Compressing image:', img.src);
+            }
+        });
+    }
+    
+    // 页面加载完成后应用图片压缩
+    window.addEventListener('load', applyImageCompression);
 });
