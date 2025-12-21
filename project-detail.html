@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目详情 - SteamPolyp DESIGN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 粒子背景 -->
+    <div id="particles-background"></div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">SteamPolyp DESIGN</a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="portfolio.html">作品集</a></li>
+                <li><a href="project-detail.html" class="active">项目详情</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 作品详情区域 -->
+    <section class="project-detail-section">
+        <div class="container">
+            <div class="project-detail-container">
+                <div class="project-image-container">
+                    <img id="project-image" src="images/系列1-启程.jpg" alt="系列1-启程">
+                </div>
+                <div class="project-info">
+                    <h1 id="project-title">系列1-启程</h1>
+                    <p id="project-description">这是我们的首个设计系列，标志着全新创意旅程的开始。本系列融合了现代设计理念与前瞻性思维，旨在为用户带来前所未有的视觉体验。</p>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <h3>使用工具</h3>
+                            <p id="project-tools">Blender, Photoshop, Illustrator</p>
+                        </div>
+                        <div class="meta-item">
+                            <h3>设计周期</h3>
+                            <p id="project-duration">3个月</p>
+                        </div>
+                    </div>
+                    <a href="portfolio.html" class="btn">返回作品集</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 相关作品推荐 -->
+    <section class="related-projects">
+        <div class="container">
+            <h2>相关作品</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <a href="project-detail.html?id=2">
+                        <img src="images/系列2-引航.jpg" alt="系列2-引航">
+                        <div class="portfolio-overlay">
+                            <h3>系列2-引航</h3>
+                            <p>引领设计潮流的先锋之作</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item">
+                    <a href="project-detail.html?id=3">
+                        <img src="images/系列3-登陆.jpg" alt="系列3-登陆">
+                        <div class="portfolio-overlay">
+                            <h3>系列3-登陆</h3>
+                            <p>创意与现实的完美着陆点</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item">
+                    <a href="project-detail.html?id=1">
+                        <img src="images/系列1-启程.jpg" alt="系列1-启程">
+                        <div class="portfolio-overlay">
+                            <h3>系列1-启程</h3>
+                            <p>开启全新设计旅程的第一步</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 SteamPolyp DESIGN. 保留所有权利 | 未来科技美学设计</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // 获取URL参数
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectId = urlParams.get('id') || '1';
+        
+        // 项目数据（实际项目中这里会从数据库获取数据）
+        const projects = {
+            1: {
+                title: "系列1-启程",
+                description: "这是我们的首个设计系列，标志着全新创意旅程的开始。本系列融合了现代设计理念与前瞻性思维，旨在为用户带来前所未有的视觉体验。",
+                image: "系列1-启程.jpg",
+                tools: "Photoshop, Illustrator, Blender",
+                duration: "2个月"
+            },
+            2: {
+                title: "系列2-引航",
+                description: "作为引领设计潮流的先锋之作，本系列展现了我们在创意表达和技术实现方面的卓越能力。每一个细节都经过精心打磨，力求达到完美的视觉平衡。",
+                image: "系列2-引航.jpg",
+                tools: "Illustrator, After Effects, Cinema 4D",
+                duration: "3个月"
+            },
+            3: {
+                title: "系列3-登陆",
+                description: "创意与现实的完美着陆点，本系列将抽象的设计理念转化为具体可感的视觉作品。通过精细的工艺和对材质的深度理解，打造出令人印象深刻的视觉效果。",
+                image: "系列3-登陆.jpg",
+                tools: "Blender, Substance Painter, Photoshop",
+                duration: "2.5个月"
+            }
+        };
+        
+        // 根据项目ID设置内容
+        if (projects[projectId]) {
+            const project = projects[projectId];
+            document.getElementById('project-image').src = `images/${project.image}`;
+            document.getElementById('project-image').alt = project.title;
+            document.getElementById('project-title').textContent = project.title;
+            document.getElementById('project-description').textContent = project.description;
+            document.getElementById('project-tools').textContent = project.tools;
+            document.getElementById('project-duration').textContent = project.duration;
+        }
+    </script>
+</body>
+</html>
