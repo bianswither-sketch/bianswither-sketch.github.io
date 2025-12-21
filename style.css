@@ -1,0 +1,927 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif;
+    background: linear-gradient(135deg, #000000 0%, #111111 100%);
+    color: #ffffcc;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* 粒子背景效果 */
+#particles-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* 确保粒子在最底层 */
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.8) 0%, rgba(255, 215, 0, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* 容器 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 导航栏 */
+.navbar {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffd700;
+    text-decoration: none;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.logo:hover::after {
+    transform: scaleX(1);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 2.5rem;
+}
+
+.nav-links a {
+    color: #cccc99;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.3));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: -1;
+    border-radius: 4px;
+}
+
+.nav-links a:hover::before,
+.nav-links a.active::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+/* 英雄区域 */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at center, rgba(30, 30, 30, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%), 
+                url('images/hero-bg.jpg') no-repeat center center/cover;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+}
+
+.hero-content {
+    z-index: 2;
+    animation: fadeInUp 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background: rgba(20, 20, 20, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 3rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    max-width: 800px;
+    width: 90%;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+
+.hero p {
+    font-size: 1.8rem;
+    color: #ffffcc;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    font-weight: 300;
+}
+
+/* 作品预览区域 */
+.portfolio-preview {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, rgba(30, 30, 30, 0.9) 0%, rgba(20, 20, 20, 0.95) 100%);
+    position: relative;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.portfolio-preview h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portfolio-preview h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+}
+
+/* 作品滑块 */
+.portfolio-slider {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    background: rgba(25, 25, 25, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 10px;
+}
+
+.slider-container {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.slide {
+    min-width: 100%;
+    transition: opacity 0.6s ease;
+    padding: 10px;
+}
+
+/* 关键：确保滑块中的图片合适显示 */
+.slide img {
+    width: 100%;
+    height: 550px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(20, 20, 20, 0.8);
+    color: #ffd700;
+    border: none;
+    font-size: 2rem;
+    padding: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 10;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.slider-btn:hover {
+    background: rgba(255, 215, 0, 0.3);
+    transform: translateY(-50%) scale(1.1);
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(255, 255, 200, 0.4);
+    margin: 0 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+}
+
+.dot.active,
+.dot:hover {
+    background: #ffd700;
+    transform: scale(1.3);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+.more-works {
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.4) 100%);
+    color: #ffffff;
+    padding: 15px 40px;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid rgba(255, 215, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.4) 0%, rgba(255, 215, 0, 0.6) 100%);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: -1;
+}
+
+.btn:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.4) 0%, rgba(255, 215, 0, 0.6) 100%);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* 联系方式 */
+.contact-info {
+    padding: 4rem 0;
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%);
+    text-align: center;
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.contact-info h2 {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+.contact-info p {
+    font-size: 1.4rem;
+    color: #ffffcc;
+}
+
+.contact-info a {
+    color: #ffd700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: 500;
+}
+
+.contact-info a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.contact-info a:hover::after {
+    width: 100%;
+}
+
+.contact-info a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    text-decoration: none;
+}
+
+/* 页脚 */
+footer {
+    background: rgba(5, 5, 5, 0.95);
+    padding: 2.5rem 0;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 215, 0, 0.3);
+    color: #cccc99;
+}
+
+/* 作品展示页面 */
+.portfolio-section {
+    padding: 7rem 0 4rem;
+    background: linear-gradient(180deg, rgba(25, 25, 25, 0.9) 0%, rgba(15, 15, 15, 0.95) 100%);
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.portfolio-section h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.portfolio-section h1::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.4);
+    border-color: rgba(255, 215, 0, 0.4);
+}
+
+/* 关键：确保作品网格中的图片合适显示 */
+.portfolio-item img {
+    width: 100%;
+    height: 320px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(0deg, rgba(20, 20, 20, 0.95) 0%, rgba(20, 20, 20, 0.7) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 2rem;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-top: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    transform: translateY(0);
+}
+
+.portfolio-overlay h3 {
+    color: #ffd700;
+    margin-bottom: 0.8rem;
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+.portfolio-overlay p {
+    color: #ffffcc;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* 作品详情页面 */
+.project-detail-section {
+    padding: 7rem 0 4rem;
+    background: linear-gradient(180deg, rgba(25, 25, 25, 0.9) 0%, rgba(15, 15, 15, 0.95) 100%);
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.project-detail-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    margin-bottom: 4rem;
+    background: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 2.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.project-image-container {
+    text-align: center;
+}
+
+/* 关键：确保详情页中的图片合适显示 */
+.project-image-container img {
+    max-width: 100%;
+    height: auto;
+    max-height: 650px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.project-info h1 {
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+.project-info p {
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    color: #ffffcc;
+    font-size: 1.1rem;
+}
+
+.project-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.meta-item {
+    background: rgba(20, 20, 20, 0.7);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.meta-item h3 {
+    color: #ffd700;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+.related-projects {
+    padding: 4rem 0;
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0.95) 0%, rgba(15, 15, 15, 0.95) 100%);
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.related-projects h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.related-projects h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+}
+
+/* 联系页面 */
+.contact-section {
+    padding: 7rem 0 4rem;
+    background: linear-gradient(180deg, rgba(25, 25, 25, 0.9) 0%, rgba(15, 15, 15, 0.95) 100%);
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.contact-section h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.contact-section h1::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    background: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 2.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.contact-info-full h2,
+.contact-form h2 {
+    color: #ffd700;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+}
+
+.contact-method {
+    margin-bottom: 2rem;
+    background: rgba(20, 20, 20, 0.7);
+    padding: 1.8rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.contact-method h3 {
+    color: #ffd700;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+.contact-method ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.contact-method li {
+    margin-bottom: 0.5rem;
+    color: #ffffcc;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed rgba(255, 215, 0, 0.3);
+}
+
+.contact-method li:last-child {
+    border-bottom: none;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: #ffd700;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    border-radius: 8px;
+    background: rgba(15, 15, 15, 0.7);
+    color: #ffffcc;
+    font-family: inherit;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ffd700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    background: rgba(20, 20, 20, 0.8);
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+    0% { 
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+    50% { 
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+    100% { 
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .hero p {
+        font-size: 1.5rem;
+    }
+    
+    .portfolio-preview h2 {
+        font-size: 2.5rem;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+    
+    .project-detail-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    .project-meta {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    .nav-links li {
+        margin-left: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.3rem;
+    }
+    
+    .hero-content {
+        padding: 2rem;
+    }
+    
+    .portfolio-preview {
+        padding: 4rem 0;
+    }
+    
+    .portfolio-preview h2 {
+        font-size: 2rem;
+    }
+    
+    .portfolio-slider {
+        max-width: 95%;
+    }
+    
+    .slide img {
+        height: 400px;
+    }
+    
+    .portfolio-section h1,
+    .contact-section h1,
+    .related-projects h2 {
+        font-size: 2rem;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .portfolio-item img {
+        height: 280px;
+    }
+    
+    .project-image-container img {
+        max-height: 400px;
+    }
+    
+    .project-detail-container,
+    .contact-content {
+        padding: 1.5rem;
+    }
+    
+    .meta-item {
+        padding: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .hero-content {
+        padding: 1.5rem;
+    }
+    
+    .portfolio-preview {
+        padding: 3rem 0;
+    }
+    
+    .slide img {
+        height: 300px;
+    }
+    
+    .portfolio-item img {
+        height: 250px;
+    }
+    
+    .project-image-container img {
+        max-height: 300px;
+    }
+    
+    .project-detail-container,
+    .contact-content {
+        padding: 1rem;
+    }
+    
+    .btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+}
