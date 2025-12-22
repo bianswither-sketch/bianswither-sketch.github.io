@@ -59,85 +59,90 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
     
-    let currentIndex = 0;
-    let slideInterval;
-    
-    // 清除自动播放定时器
-    function clearSlideInterval() {
-        if (slideInterval) {
-            clearInterval(slideInterval);
-        }
-    }
-    
-    // 开始自动播放
-    function startSlideInterval() {
-        clearSlideInterval();
-        slideInterval = setInterval(nextSlide, 6000);
-    }
-    
-    function showSlide(index) {
-        if (index >= slides.length) {
-            currentIndex = 0;
-        } else if (index < 0) {
-            currentIndex = slides.length - 1;
-        } else {
-            currentIndex = index;
+    // 只有当必要的元素都存在时才初始化滑块功能
+    if (sliderContainer && slides && slides.length > 0) {
+        let currentIndex = 0;
+        let slideInterval;
+        
+        // 清除自动播放定时器
+        function clearSlideInterval() {
+            if (slideInterval) {
+                clearInterval(slideInterval);
+            }
         }
         
-        // 移动滑块（添加缓动效果）
-        sliderContainer.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)';
-        sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        // 开始自动播放
+        function startSlideInterval() {
+            clearSlideInterval();
+            slideInterval = setInterval(nextSlide, 6000);
+        }
         
-        // 更新圆点指示器
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentIndex);
-        });
+        function showSlide(index) {
+            if (index >= slides.length) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = slides.length - 1;
+            } else {
+                currentIndex = index;
+            }
+            
+            // 移动滑块（添加缓动效果）
+            sliderContainer.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1)';
+            sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // 更新圆点指示器
+            if (dots && dots.length > 0) {
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
+            
+            // 重新开始自动播放
+            startSlideInterval();
+        }
         
-        // 重新开始自动播放
+        // 下一张幻灯片
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+        
+        // 上一张幻灯片
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+        
+        // 圆点点击事件
+        if (dots && dots.length > 0) {
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+        }
+        
+        // 按钮事件
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+            });
+        }
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+            });
+        }
+        
+        // 鼠标悬停时暂停自动播放
+        const portfolioSlider = document.querySelector('.portfolio-slider');
+        if (portfolioSlider) {
+            portfolioSlider.addEventListener('mouseenter', clearSlideInterval);
+            portfolioSlider.addEventListener('mouseleave', startSlideInterval);
+        }
+        
+        // 初始化自动播放
         startSlideInterval();
     }
-    
-    // 下一张幻灯片
-    function nextSlide() {
-        showSlide(currentIndex + 1);
-    }
-    
-    // 上一张幻灯片
-    function prevSlide() {
-        showSlide(currentIndex - 1);
-    }
-    
-    // 圆点点击事件
-    if (dots && dots.length > 0) {
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showSlide(index);
-            });
-        });
-    }
-    
-    // 按钮事件
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-        });
-    }
-    
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-        });
-    }
-    
-    // 鼠标悬停时暂停自动播放
-    const portfolioSlider = document.querySelector('.portfolio-slider');
-    if (portfolioSlider) {
-        portfolioSlider.addEventListener('mouseenter', clearSlideInterval);
-        portfolioSlider.addEventListener('mouseleave', startSlideInterval);
-    }
-    
-    // 初始化自动播放
-    startSlideInterval();
     
     // 表单提交处理
     const contactForm = document.getElementById('contactForm');
