@@ -1,4 +1,4 @@
-/ 粒子背景效果和网站功能
+// 粒子背景效果和网站功能
 document.addEventListener('DOMContentLoaded', function() {
     const particlesBackground = document.getElementById('particles-background');
     
@@ -108,20 +108,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // 圆点点击事件
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            showSlide(index);
+    if (dots && dots.length > 0) {
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
         });
-    });
+    }
     
     // 按钮事件
-    nextBtn.addEventListener('click', () => {
-        nextSlide();
-    });
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+        });
+    }
     
-    prevBtn.addEventListener('click', () => {
-        prevSlide();
-    });
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+        });
+    }
     
     // 鼠标悬停时暂停自动播放
     const portfolioSlider = document.querySelector('.portfolio-slider');
