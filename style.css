@@ -15,6 +15,17 @@ body {
     min-height: 100vh;
 }
 
+/* 水面波动背景效果 */
+#waterCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; /* 确保水面在最底层 */
+    pointer-events: none;
+}
+
 /* 粒子背景效果 */
 #particles-background {
     position: fixed;
@@ -22,7 +33,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* 确保粒子在最底层 */
+    z-index: -1; /* 确保粒子在水面之上 */
     pointer-events: none;
 }
 
