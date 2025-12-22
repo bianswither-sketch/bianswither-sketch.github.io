@@ -1,5 +1,153 @@
 // 粒子背景效果和网站功能
 document.addEventListener('DOMContentLoaded', function() {
+    // 水面波动效果
+    const canvas = document.getElementById('waterCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // 设置canvas尺寸
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    
+    // 初始化canvas尺寸
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    // 水面波动参数
+    const waterConfig = {
+        density: 0.05, // 波动密度
+        amplitude: 20, // 波动幅度
+        frequency: 0.02, // 波动频率
+        speed: 0.02, // 波动速度
+        color: 'rgba(30, 144, 255, 0.3)', // 水面颜色
+        mouseRadius: 100, // 鼠标影响半径
+        mouseStrength: 50 // 鼠标影响强度
+    };
+    
+    // 存储鼠标位置
+    const mouse = {
+        x: null,
+        y: null,
+        radius: waterConfig.mouseRadius
+    };
+    
+    // 监听鼠标移动
+    canvas.addEventListener('mousemove', (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
+    });
+    
+    // 监听鼠标离开
+    canvas.addEventListener('mouseout', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+    
+    // 波动点数组
+    let points = [];
+    
+    // 初始化波动点
+    function initWaterPoints() {
+        points = [];
+        const pointCount = Math.ceil(canvas.width * waterConfig.density);
+        for (let i = 0; i < pointCount; i++) {
+            points.push({
+                x: (i / (pointCount - 1)) * canvas.width,
+                y: canvas.height / 2,
+                originY: canvas.height / 2,
+                vy: 0, // 垂直速度
+                neighbors: [] // 邻近点影响
+            });
+        }
+        
+        // 设置邻近点关系
+        for (let i = 0; i < points.length; i++) {
+            points[i].neighbors = [];
+            if (i > 0) points[i].neighbors.push(points[i - 1]);
+            if (i < points.length - 1) points[i].neighbors.push(points[i + 1]);
+        }
+    }
+    
+    // 初始化波动点
+    initWaterPoints();
+    
+    // 更新波动点
+    function updateWaterPoints() {
+        // 应用波动动画
+        const time = Date.now() * waterConfig.speed;
+        for (let i = 0; i < points.length; i++) {
+            const point = points[i];
+            // 基础波动
+            point.y = point.originY + Math.sin(time + point.x * waterConfig.frequency) * waterConfig.amplitude;
+            
+            // 鼠标交互影响
+            if (mouse.x !== null && mouse.y !== null) {
+                const dx = point.x - mouse.x;
+                const dy = point.y - mouse.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < mouse.radius) {
+                    const force = (1 - distance / mouse.radius) * waterConfig.mouseStrength;
+                    point.y += force;
+                }
+            }
+            
+            // 邻近点影响（创建波纹传播效果）
+            let totalForce = 0;
+            point.neighbors.forEach(neighbor => {
+                totalForce += (neighbor.y - point.y) * 0.1;
+            });
+            
+            point.vy += totalForce * 0.1;
+            point.vy *= 0.9; // 阻尼
+            point.y += point.vy;
+        }
+    }
+    
+    // 绘制水面
+    function drawWater() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // 创建渐变色
+        const gradient = ctx.createLinearGradient(0, canvas.height / 2 - waterConfig.amplitude, 0, canvas.height / 2 + waterConfig.amplitude);
+        gradient.addColorStop(0, 'rgba(30, 144, 255, 0.4)');
+        gradient.addColorStop(0.5, 'rgba(30, 144, 255, 0.2)');
+        gradient.addColorStop(1, 'rgba(30, 144, 255, 0.1)');
+        
+        // 绘制水面
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height);
+        ctx.lineTo(0, points[0].y);
+        
+        // 使用贝塞尔曲线连接点，使水面更加平滑
+        for (let i = 0; i < points.length - 1; i++) {
+            const point = points[i];
+            const nextPoint = points[i + 1];
+            const cx = (point.x + nextPoint.x) / 2;
+            const cy = (point.y + nextPoint.y) / 2;
+            ctx.quadraticCurveTo(point.x, point.y, cx, cy);
+        }
+        
+        ctx.lineTo(canvas.width, points[points.length - 1].y);
+        ctx.lineTo(canvas.width, canvas.height);
+        ctx.closePath();
+        
+        ctx.fillStyle = gradient;
+        ctx.fill();
+    }
+    
+    // 动画循环
+    function animateWater() {
+        updateWaterPoints();
+        drawWater();
+        requestAnimationFrame(animateWater);
+    }
+    
+    // 启动水面动画
+    animateWater();
+    
+    // 粒子背景效果
     const particlesBackground = document.getElementById('particles-background');
     
     // 创建随机飘动的黄黑粒子（适配工业黄黑风格）
